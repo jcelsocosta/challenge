@@ -70,7 +70,7 @@ export default function Movie({}: IMovieProps) {
           </span>
         </div>
         {movies && movies.length > 0 && (
-          <div className="pt-4 grid grid-cols-2 md:grid-cols-5 gap-x-4 gap-y-10">
+          <div className="pt-4 grid grid-cols-2 md:grid-cols-5 gap-x-3 md:gap-x-4 md:gap-y-5">
             {movies.map((movie: any, idx: any) => (
               <MovieCard movie={movie} key={idx} id={`movie-${movie.movieID}`} />
             ))}

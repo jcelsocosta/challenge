@@ -1,11 +1,10 @@
 version: '3'
-
+      
 services:
   postgres:
     image: postgres:14-alpine
     container_name: challengedb
-    ports:
-      - "5435:5432"
+    network_mode: host
     environment:
       POSTGRES_DB: challengedb
       POSTGRES_USER: admin
@@ -18,10 +17,9 @@ services:
       context: ./backend/
       dockerfile: Dockerfile
     image: backend-rest
+    network_mode: host
     environment:
       - TOKEN_THE_MOVIE_DB=${TOKEN_THE_MOVIE_DB}
-    ports:
-      - "4001:4001"
     depends_on:
       - postgres
     restart: always
@@ -31,10 +29,7 @@ services:
       context: ./ui/
       dockerfile: Dockerfile
     image: ui
-    ports:
-      - "8080:4300"
-      - "80:4300"
+    network_mode: host
     restart: always
-
 volumes:
   pgdata:

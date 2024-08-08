@@ -22,7 +22,7 @@ class PostgresConfig {
     this.appDataSource = new DataSource({
       type: 'postgres',
       host: 'localhost',
-      port: 5435,
+      port: 5432,
       username: 'admin',
       password: 'admin',
       database: 'challengedb',

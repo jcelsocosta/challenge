@@ -31,7 +31,7 @@
    ```bash
    git clone https://github.com/jcelsocosta/challenge
    cd challenge
-2. Informe a chave da api do [themovie](https://developers.themoviedb.org/3)
+2. Abra o arquivo .env e informe o token de leitura da api do [themovie](https://developers.themoviedb.org/3)
 3. Execute o comando docker-compose up -d
 4. Abrir o browser em 127.0.0.1:4300
 

@@ -21,7 +21,7 @@ class PostgresConfig {
   private buildConfigDev(): void {
     this.appDataSource = new DataSource({
       type: 'postgres',
-      host: '127.0.0.1',
+      host: 'localhost',
       port: 5435,
       username: 'admin',
       password: 'admin',

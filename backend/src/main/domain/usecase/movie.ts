@@ -21,8 +21,8 @@ class MovieUseCase {
 
   async listMoviesByPagination(input: ListMoviesByPaginationUseCaseInput): Promise<ListMoviesByPaginationUseCaseOutput> {
     try {
-      if (input.limit && input.limit > 15) {
-        const error = new PreConditionServerError(generateErrorMessage('The maximun limit is 15.'))
+      if (input.limit && input.limit > 25) {
+        const error = new PreConditionServerError(generateErrorMessage('The maximun limit is 25.'))
         console.error(error.logErrorMessage())
         return new ListMoviesByPaginationUseCaseOutput(null, error)
       }

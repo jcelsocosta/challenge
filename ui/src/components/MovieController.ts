@@ -1,12 +1,13 @@
 import { request, RequestAPIType, ResponseAPIType } from "../service/request"
 
 class MovieController {
-  async listMoviesByPagination(page: number): Promise<ResponseAPIType> {
+  async listMoviesByPagination(page: number, limit: number): Promise<ResponseAPIType> {
     const req: RequestAPIType = {
       method: 'GET',
       url: '/listMoviesByPagination',
       params: {
-        page
+        page,
+        limit
       }
     }
     return await request(req)

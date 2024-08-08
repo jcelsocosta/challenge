@@ -18,6 +18,8 @@ export default function ReIndexModal({ isOpen, onOpenChange }: IReIndexModalProp
       notifyError(error.message)
       return
     }
+    window.dispatchEvent(new CustomEvent('re-index-movie'))
+
     notifySuccess('Index created successfully')
   }
 

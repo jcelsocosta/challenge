@@ -9,6 +9,7 @@ import { useDisclosure } from '@nextui-org/react'
 export interface IMovieProps extends React.ComponentPropsWithoutRef<'div'> {}
 
 let page = 1
+const LIMIT = 20
 
 export default function Movie({}: IMovieProps) {
   const [movies, setMovies] = useState<MovieType[]>([])
@@ -25,12 +26,13 @@ export default function Movie({}: IMovieProps) {
   }
 
   async function listMoviesByPagination(page: number): Promise<void> {
-    const { data, error } = await movieController.listMoviesByPagination(page)
+    const { data, error } = await movieController.listMoviesByPagination(page, LIMIT)
 
     if (error) {
       notifyError(error.message)
     } else {
       if (page <= 1) {
+        setMovies(() => [])
         setMovies(() => data)
       } else {
         setMovies((prevValues) => [...prevValues, ...data])
@@ -40,6 +42,10 @@ export default function Movie({}: IMovieProps) {
 
   async function listennerEvents(): Promise<void> {
     if (window) {
+      window.addEventListener('re-index-movie', async () => {
+        await listMoviesByPagination(1)
+      })
+
       window.addEventListener('scroll', () => {
         const documentHeight = document.documentElement.scrollHeight
 
@@ -47,7 +53,7 @@ export default function Movie({}: IMovieProps) {
 
         const windowHeight = window.innerHeight
 
-        if (scrollTop + windowHeight >= documentHeight) {
+        if (scrollTop + windowHeight >= documentHeight - 100) {
           page++
           listMoviesByPagination(page)
         }

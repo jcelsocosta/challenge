@@ -1,0 +1,11 @@
+.container {
+  font-size: 12px;
+}
+
+.progress-bar-custom {
+  @apply bg-white;
+}
+
+.divOverwrite {
+  @apply z-30 block;
+}

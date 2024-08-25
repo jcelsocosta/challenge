@@ -31,8 +31,8 @@ services:
     image: ui
     network_mode: host
     labels:
-      - "traefik.http.routers.ris-ui.rule=Host(`risui.codeinterviewstep.com`)" # Define a regra de roteamento para o serviço
-      - "traefik.http.services.ris-ui.loadbalancer.server.port=4300"
+      - "traefik.http.routers.ui.rule=Host(`codeinterviewstep.com`)" # Define a regra de roteamento para o serviço
+      - "traefik.http.services.ui.loadbalancer.server.port=4300"
     restart: always
 volumes:
   pgdata:

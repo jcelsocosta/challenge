@@ -4,7 +4,9 @@ services:
   postgres:
     image: postgres:14-alpine
     container_name: challengedb
-    network_mode: host
+    labels:
+      - "traefik.http.routers.challengedb.rule=Host(`challengedb.codeinterviewstep.com`)" # Define a regra de roteamento para o serviço
+      - "traefik.http.services.challengedb.loadbalancer.server.port=5432"
     environment:
       POSTGRES_DB: challengedb
       POSTGRES_USER: admin
@@ -17,7 +19,9 @@ services:
       context: ./backend/
       dockerfile: Dockerfile
     image: backend-rest
-    network_mode: host
+    labels:
+      - "traefik.http.routers.backend.rule=Host(`backend.codeinterviewstep.com`)" # Define a regra de roteamento para o serviço
+      - "traefik.http.services.backend.loadbalancer.server.port=4001"
     environment:
       - TOKEN_THE_MOVIE_DB=${TOKEN_THE_MOVIE_DB}
     depends_on:

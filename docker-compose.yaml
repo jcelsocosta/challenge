@@ -29,7 +29,8 @@ services:
       context: ./ui/
       dockerfile: Dockerfile
     image: ui
-    network_mode: host
+    ports:
+      - 4300:3000
     labels:
       - "traefik.http.routers.ui.rule=Host(`codeinterviewstep.com`)" # Define a regra de roteamento para o serviço
       - "traefik.http.services.ui.loadbalancer.server.port=4300"

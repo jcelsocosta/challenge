@@ -30,6 +30,9 @@ services:
       dockerfile: Dockerfile
     image: ui
     network_mode: host
+    labels:
+      - "traefik.http.routers.ris-ui.rule=Host(`risui.codeinterviewstep.com`)" # Define a regra de roteamento para o serviço
+      - "traefik.http.services.ris-ui.loadbalancer.server.port=4300"
     restart: always
 volumes:
   pgdata:

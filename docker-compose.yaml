@@ -5,6 +5,7 @@ services:
     image: postgres:14-alpine
     container_name: challengedb
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.challengedb.rule=Host(`challengedb.codeinterviewstep.com`)" # Define a regra de roteamento para o serviço
       - "traefik.http.services.challengedb.loadbalancer.server.port=5432"
     environment:
@@ -22,6 +23,7 @@ services:
       dockerfile: Dockerfile
     image: backend-rest
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.backend.rule=Host(`backend.codeinterviewstep.com`)" # Define a regra de roteamento para o serviço
       - "traefik.http.services.backend.loadbalancer.server.port=4001"
     environment:

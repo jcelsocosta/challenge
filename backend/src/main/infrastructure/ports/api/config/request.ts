@@ -38,6 +38,7 @@ async function requestAPI(req: RequestAPIType): Promise<ResponseAPIType> {
       data: null,
       error: err.response.data
     }
+    console.log(err)
     return output
   }
 }

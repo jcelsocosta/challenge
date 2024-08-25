@@ -22,7 +22,7 @@ async function request(req: RequestAPIType): Promise<ResponseAPIType> {
   try {
     const response = await axios({
       method: req.method,
-      url: `http://backend:4001${req.url}`,
+      url: `http://backend.codeinterviewstep.com:4001${req.url}`,
       responseType: 'json',
       timeout: req.timeout || TimeoutEnum.default,
       params: req.params,

@@ -21,11 +21,7 @@ class PostgresConfig {
   private buildConfigDev(): void {
     this.appDataSource = new DataSource({
       type: 'postgres',
-      host: 'localhost',
-      port: 5432,
-      username: 'admin',
-      password: 'admin',
-      database: 'challengedb',
+      url: 'postgres://admin:admin@challengedb.codeinterviewstep.com/chalengedb' ,
       entities: this.models,
       synchronize: true,
       logging: false

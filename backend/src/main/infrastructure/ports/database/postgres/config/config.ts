@@ -21,7 +21,7 @@ class PostgresConfig {
   private buildConfigDev(): void {
     this.appDataSource = new DataSource({
       type: 'postgres',
-      url: 'postgres://admin:admin@postgres:5432/chalengedb' ,
+      url: 'postgres://admin:admin@postgres:5432/challengedb' ,
       entities: this.models,
       synchronize: true,
       logging: false

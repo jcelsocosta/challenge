@@ -36,6 +36,7 @@ services:
     ports:
       - 4300:4300
     labels:
+      - "traefik.enable=true"
       - "traefik.http.routers.ui.rule=Host(`codeinterviewstep.com`)" # Define a regra de roteamento para o serviço
       - "traefik.http.routers.ui-www.rule=Host(`www.codeinterviewstep.com`)" # Regra para www.codeinterviewstep.com
       - "traefik.http.services.ui.loadbalancer.server.port=4300"

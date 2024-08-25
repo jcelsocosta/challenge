@@ -13,6 +13,8 @@ services:
       POSTGRES_PASSWORD: admin
     volumes:
       - pgdata:/var/lib/postgresql/data
+    networks:
+      - traefik
   backend:
     container_name: backend-rest
     build:
@@ -27,6 +29,8 @@ services:
     depends_on:
       - postgres
     restart: always
+    networks:
+      - traefik
   ui:
     container_name: ui
     build:
@@ -41,5 +45,11 @@ services:
       - "traefik.http.routers.ui-www.rule=Host(`www.codeinterviewstep.com`)" # Regra para www.codeinterviewstep.com
       - "traefik.http.services.ui.loadbalancer.server.port=4300"
     restart: always
+    networks:
+      - traefik
+
+networks:
+  traefik:
+    external: true
 volumes:
   pgdata:

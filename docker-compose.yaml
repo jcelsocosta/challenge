@@ -18,6 +18,10 @@ services:
       context: ./backend/
       dockerfile: Dockerfile
     image: backend-rest
+    labels:
+    - "traefik.enable=true"
+    - "traefik.http.routers.backend.rule=Host(`backend.codeinterviewstep.com`)"
+    - "traefik.http.services.backend.loadbalancer.server.port=4001"
     environment:
       - TOKEN_THE_MOVIE_DB=${TOKEN_THE_MOVIE_DB}
     depends_on:

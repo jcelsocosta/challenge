@@ -52,9 +52,10 @@ class MovieUseCase {
       const existMovies = await this.movieRepository.exists()
 
       if (existMovies) {
+        console.log('existe')
         return
       }
-
+      console.log('iniciio')
       for (let index = 1; index <= page; index++) {
         const { data, error } = await listMooviesFromAPI('popular','en_US', index)
 

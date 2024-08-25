@@ -8,6 +8,7 @@ async function initMovie() {
   let isWorking = false
   cron.schedule('*/30 * * * * *', async () => {
     if (!isWorking) {
+      console.log('Data Loaded Start.')
       isWorking = true
         await movieController.loadMoviesFromAPI()
       isWorking = false
